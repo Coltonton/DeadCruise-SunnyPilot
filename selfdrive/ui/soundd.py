@@ -43,6 +43,11 @@ sound_list: Dict[int, Tuple[str, Optional[int], float]] = {
 
   AudibleAlert.warningSoft: ("warning_soft.wav", None, MAX_VOLUME),
   AudibleAlert.warningImmediate: ("warning_immediate.wav", None, MAX_VOLUME),
+
+  AudibleAlert.warn0: ("prompt_distracted-0.wav", None, MAX_VOLUME),
+  AudibleAlert.warn1: ("prompt_distracted-1.wav", None, MAX_VOLUME),
+  AudibleAlert.warn3: ("prompt_distracted-2.wav", None, MAX_VOLUME),
+  AudibleAlert.wakup: ("wakeup.wav", 2, MAX_VOLUME),
 }
 
 def check_controls_timeout_alert(sm):
@@ -90,7 +95,7 @@ class Soundd:
     for sound in sound_list:
       filename, play_count, volume = sound_list[sound]
 
-      wavefile = wave.open(BASEDIR + "/selfdrive/assets/sounds/" + filename, 'r')
+      wavefile = wave.open(BASEDIR + "/selfdrive/sunnypilot/assets/sounds/" + filename, 'r')
 
       assert wavefile.getnchannels() == 1
       assert wavefile.getsampwidth() == 2
